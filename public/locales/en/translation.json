@@ -1,0 +1,10 @@
+{
+  "login": {
+    "msg":"Enter your username and password to login to your account",
+    "username":"Username",
+    "password":"Password",
+    "forgot":"Forgot Password?",
+    "acc": "Don't have an account?",
+    "signup": "Sign Up"
+  }
+}
