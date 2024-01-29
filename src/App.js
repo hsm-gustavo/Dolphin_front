@@ -10,7 +10,7 @@ function App() {
         consectetur ullam magni a laudantium veniam culpa. Voluptatum fugit
         laudantium ea.
       </p>
-      <button>
+      <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
         <Link to={"/login"}>Login</Link>
       </button>
     </div>
