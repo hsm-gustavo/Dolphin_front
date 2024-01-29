@@ -1,19 +1,20 @@
-import Login from "./pages/Login"
-import Navbar from "./components/Navbar"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex flex-col justify-center items-center bg-blue-900 h-screen">
+    <div className="flex h-screen flex-col items-center justify-center bg-blue-900 text-center">
       {/* TODO -> see react-router-dom v6.x */}
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Login />} />
-        </Routes>
-      </Router>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsam
+        provident ducimus reiciendis ullam adipisci. Ea rerum ratione aperiam,
+        consectetur ullam magni a laudantium veniam culpa. Voluptatum fugit
+        laudantium ea.
+      </p>
+      <button>
+        <Link to={"/login"}>Login</Link>
+      </button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

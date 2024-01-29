@@ -48,7 +48,7 @@ const Navbar = () => {
     <nav className="fixed top-0 z-10 flex w-full items-center justify-end py-2">
       <div className="relative">
         <button
-          className="mx-2 flex w-36 flex-row items-center justify-center rounded-lg border-2 border-blue-950 bg-blue-950 py-1 shadow-lg transition duration-300 ease-in-out hover:bg-blue-900"
+          className="mx-2 flex w-20 flex-row items-center justify-center rounded-lg border-2 border-blue-950 bg-blue-950 py-1 shadow-lg transition duration-300 ease-in-out hover:bg-blue-900"
           ref={dropdownBtnRef}
           onClick={handleIsOpen}
         >
@@ -56,7 +56,7 @@ const Navbar = () => {
           <img src={downarrow} alt="arrow" className="w-4" />
         </button>
         <div
-          className="absolute left-1/2 -z-[1] my-auto hidden w-36 origin-top -translate-x-1/2 -translate-y-2 divide-y rounded-b-lg bg-blue-950"
+          className="absolute left-4 -z-[1] my-auto hidden w-36 origin-top -translate-x-1/2 -translate-y-2 divide-y rounded-s-lg rounded-b-lg bg-blue-950"
           ref={dropdownRef}
         >
           <ul className="my-2">

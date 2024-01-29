@@ -2,8 +2,13 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Navbar from "./components/Navbar";
+import Login from "./routes/Login";
+import Error from "./routes/Error";
 import reportWebVitals from "./reportWebVitals";
 import "./constants/i18n";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 
 const loadingMarkup = (
   <div className="flex h-screen w-full items-center justify-center">
@@ -11,11 +16,24 @@ const loadingMarkup = (
   </div>
 );
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/login",
+    element: <Login />,    
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
-      <App />
+      <Navbar />
+      <RouterProvider router={router}/>
     </React.StrictMode>
   </Suspense>,
 );

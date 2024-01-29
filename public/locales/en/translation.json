@@ -1,10 +1,18 @@
 {
   "login": {
-    "msg":"Enter your username and password to login to your account",
-    "username":"Username",
-    "password":"Password",
-    "forgot":"Forgot Password?",
+    "msg": "Enter your username and password to login to your account",
+    "username": "Username",
+    "password": "Password",
+    "forgot": "Forgot Password?",
     "acc": "Don't have an account?",
-    "signup": "Sign Up"
+    "signup": "Sign Up",
+    "error": {
+      "error": "Error",
+      "text": "Login Failed"
+    },
+    "success": {
+      "success": "Success",
+      "text": "Login Successful"
+    }
   }
 }

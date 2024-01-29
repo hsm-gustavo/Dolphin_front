@@ -5,6 +5,14 @@
     "password": "Senha",
     "forgot": "Esqueceu sua senha?",
     "acc": "Não tem uma conta?",
-    "signup": "Cadastre-se"
+    "signup": "Cadastre-se",
+    "error": {
+      "error": "Erro",
+      "text": "Falha ao fazer login"
+    },
+    "success": {
+      "success": "Success",
+      "text": "Login bem sucedido"
+    }
   }
 }
