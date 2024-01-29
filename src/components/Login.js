@@ -11,7 +11,7 @@ const Login = () => {
           Enter your username and password to login to your account
         </p>
       </div>
-      <form className="flex flex-col">
+      <form className="flex flex-col" method="post" action="/">
         <label className="font-semibold text-left" htmlFor="username">
           Username
         </label>
@@ -38,6 +38,7 @@ const Login = () => {
           Forgot password?
         </Link>
         <input
+          name="Enter"
           type="submit"
           value="Login"
           className="my-10 bg-black text-white py-2 rounded-lg hover:bg-slate-900"
