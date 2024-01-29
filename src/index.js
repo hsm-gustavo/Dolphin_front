@@ -1,14 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import Navbar from "./components/Navbar";
+import Login from "./routes/Login";
+import Error from "./routes/Error";
+import reportWebVitals from "./reportWebVitals";
+import "./constants/i18n";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const loadingMarkup = (
+  <div className="flex h-screen w-full items-center justify-center">
+    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-950"></div>
+  </div>
+);
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/login",
+    element: <Login />,    
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Suspense fallback={loadingMarkup}>
+    <React.StrictMode>
+      <Navbar />
+      <RouterProvider router={router}/>
+    </React.StrictMode>
+  </Suspense>,
 );
 
 // If you want to start measuring performance in your app, pass a function
