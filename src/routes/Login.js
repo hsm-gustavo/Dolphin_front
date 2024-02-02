@@ -4,6 +4,9 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import dotenv from "dotenv";
+
+dotenv.config({path: '.env'});
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,14 +15,18 @@ const Login = () => {
   const { t } = useTranslation();
   /* const MySwal = withReactContent(Swal); */
 
+  const url = "http://localhost:5000/login/1";
   const getLogin = async ({ username, password }) => {
-    return await fetch("http://localhost:3001/login", {
+    return await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-    }).then((res) => res.json());
+    }).then((res) => {
+      res.json();
+      console.log("POST login");
+    });
     /* .then((data) => {
         console.log(data);
         localStorage.setItem("token", data.token);
