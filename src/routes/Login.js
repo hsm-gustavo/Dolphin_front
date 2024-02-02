@@ -93,7 +93,7 @@ const Login = () => {
           />
           <p>
             {t("login.acc")}{" "}
-            <Link to={123} className="underline">
+            <Link to={"/signup"} className="underline">
               {t("login.signup")}
             </Link>
           </p>
