@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { useRef, useEffect } from "react";
 import i18n from "../constants/i18n";
 import globe from "../assets/globe.svg";
