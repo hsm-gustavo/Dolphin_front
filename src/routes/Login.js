@@ -1,18 +1,15 @@
-import { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   let i = 0;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Click (submissão)");
+
     let userData = {
-      username: username,
-      password: password
+      username: e.target.username.value,
+      password: e.target.password.value
     };
     fetch('http://localhost:5000/login/' + i, {
       method: "POST",
@@ -35,7 +32,7 @@ const Login = () => {
           <h1 className="text-3xl font-bold">Login</h1>
           <p className="text-lg text-slate-500">{("login.msg")}</p>
         </div>
-        <form className="flex flex-col">
+        <form className="flex flex-col" onSubmit={handleSubmit}>
           <label className="text-left font-semibold" htmlFor="username">
             {("login.username")}
           </label>
@@ -45,7 +42,6 @@ const Login = () => {
             placeholder={("login.username")}
             className="my-2 rounded-lg border-2 border-slate-100 px-3 py-1 pr-20 focus:outline-none focus:ring-2 focus:ring-slate-400"
             required
-            onChange={(e) => setUsername(e.target.value)}
           />
 
           <label className="mb-2 text-left font-semibold" htmlFor="password">
@@ -58,7 +54,6 @@ const Login = () => {
             placeholder={("login.password")}
             className="my-2 rounded-lg border-2 border-slate-100 px-3 py-1 pr-20 focus:outline-none focus:ring-2 focus:ring-slate-400"
             required
-            onChange={(e) => setPassword(e.target.value)}
           />
           <Link to={123} className="font-medium underline">
             {("login.forgot")}
@@ -67,7 +62,6 @@ const Login = () => {
             type="submit"
             value="Login"
             className="my-10 rounded-lg bg-black py-2 text-white hover:bg-slate-900"
-            onClick={(e) => handleSubmit(e)}
           />
           <p>
             {("login.acc")}{" "}
