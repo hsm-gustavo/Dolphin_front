@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { useRef, useEffect } from "react";
 import i18n from "../constants/i18n";
 import globe from "../assets/globe.svg";
@@ -56,7 +55,7 @@ const Navbar = () => {
           <img src={downarrow} alt="arrow" className="w-4" />
         </button>
         <div
-          className="absolute left-4 -z-[1] my-auto hidden w-36 origin-top -translate-x-1/2 -translate-y-2 divide-y rounded-s-lg rounded-b-lg bg-blue-950"
+          className="absolute left-4 -z-[1] my-auto hidden w-36 origin-top -translate-x-1/2 -translate-y-2 divide-y rounded-b-lg rounded-s-lg bg-blue-950"
           ref={dropdownRef}
         >
           <ul className="my-2">
@@ -64,13 +63,10 @@ const Navbar = () => {
               <li
                 key={country_code}
                 className="px-2 py-2  font-semibold text-white hover:bg-slate-500"
+                onClick={() => i18n.changeLanguage(code)}
               >
-                <button onClick={() => i18n.changeLanguage(code)}>
-                  <span
-                    className={`fi fi-${country_code} mr-2 shadow-lg`}
-                  ></span>
-                  {name}
-                </button>
+                <span className={`fi fi-${country_code} mr-2 shadow-lg`}></span>
+                {name}
               </li>
             ))}
           </ul>
