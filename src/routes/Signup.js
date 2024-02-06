@@ -18,13 +18,13 @@ const Signup = () => {
 
   const validatePassword = (password, confirmPassword) => {
     if (password !== confirmPassword) {
-      return { isValid: false, message: "Passwords do not match" };
+      return { isValid: false, message: t("signup.error.password.match") };
     }
 
     if (password.length < 8) {
       return {
         isValid: false,
-        message: "Password must be at least 8 characters",
+        message: t("signup.error.password.length"),
       };
     }
 
@@ -34,7 +34,7 @@ const Signup = () => {
       return {
         isValid: false,
         message:
-          "Password must contain a symbol (!, @, #, $, %, &, *, ?) and a number (0-9)",
+          t("signup.error.password.numsym"),
       };
     }
 
@@ -42,19 +42,19 @@ const Signup = () => {
       return {
         isValid: false,
         message:
-          "Password must contain a symbol (!, @, #, $, %, &, *, ?) and a number (0-9)",
+          t("signup.error.password.numsym"),
       };
     }
 
-    return { isValid: true, message: "Password is valid" };
+    return { isValid: true, message: "" };
   };
 
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     if (!re.test(email)) {
-      return { isValid: false, message: "Invalid email" };
+      return { isValid: false, message: t("signup.error.email") };
     }
-    return { isValid: true, message: "Email is valid" };
+    return { isValid: true, message: "" };
   };
 
   const handleSubmit = (e) => {
@@ -79,8 +79,8 @@ const Signup = () => {
       return;
     }
 
-    setEmailValidation({ isValid: true, message: "Email is valid" });
-    setPasswordValidation({ isValid: true, message: "Password is valid" });
+    setEmailValidation({ isValid: true, message: "" });
+    setPasswordValidation({ isValid: true, message: "" });
   };
 
   return (
