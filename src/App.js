@@ -12,6 +12,8 @@ function App() {
       </p>
       <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
         <Link to={"/login"}>Login</Link>
+      </button>
+      <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
         <Link to={"/signup"}>Sign up</Link>
       </button>
     </div>
