@@ -1,7 +1,8 @@
 {
   "login": {
-    "msg": "Enter your username and password to login to your account",
-    "username": "Username",
+    "msg": "Enter your email and password to login to your account",
+    "login": "Login",
+    "email": "Email",
     "password": "Password",
     "forgot": "Forgot Password?",
     "acc": "Don't have an account?",
@@ -14,5 +15,21 @@
       "success": "Success",
       "text": "Login Successful"
     }
+  },
+  "signup": {
+    "signup": "Sign Up",
+    "msg": "Enter your details to create an account",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "password": "Password",
+    "confirm": "Confirm Password",
+    "email": "Email",
+    "acc": "Already have an account?",
+    "login": "Login",
+    "error": {
+      "error": "Error",
+      "text": "Signup Failed"
+    }
+    
   }
 }

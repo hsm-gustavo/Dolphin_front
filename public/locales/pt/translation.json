@@ -1,7 +1,8 @@
 {
   "login": {
-    "msg": "Digite seu nome de usuário e senha para fazer login em sua conta",
-    "username": "Nome de usuário",
+    "msg": "Digite seu email e senha para entrar em sua conta",
+    "login": "Entrar",
+    "email": "Email",
     "password": "Senha",
     "forgot": "Esqueceu sua senha?",
     "acc": "Não tem uma conta?",
@@ -13,6 +14,21 @@
     "success": {
       "success": "Success",
       "text": "Login bem sucedido"
+    }
+  },
+  "signup": {
+    "signup": "Cadastre-se",
+    "msg": "Digite seus detalhes para criar uma conta",
+    "firstName": "Primeiro Nome",
+    "lastName": "Último Nome",
+    "password": "Senha",
+    "confirm": "Confirmar Senha",
+    "email": "Email",
+    "acc": "Já tem uma conta?",
+    "login": "Entre",
+    "error": {
+      "error": "Error",
+      "text": "Signup Failed"
     }
   }
 }
