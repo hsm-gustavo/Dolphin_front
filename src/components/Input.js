@@ -24,7 +24,7 @@ const Input = ({
         value={value || undefined}
       />
       {validation && !validation.isValid && (
-        <p className="text-red-500 row-start-3">{validation.message}</p>
+        <p className="text-red-500 row-start-3 col-span-full">{validation.message}</p>
       )}
     </>
   );
