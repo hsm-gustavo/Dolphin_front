@@ -27,12 +27,19 @@
     "acc": "Já tem uma conta?",
     "login": "Entre",
     "error": {
+      "error": "Erro",
+      "text": "Falha ao criar conta",
+      "inUse": "Email já está em uso",
       "email": "Email Inválido",
       "password": {
         "length": "A senha deve ter no mínimo 8 caracteres",
         "match": "As senhas não coincidem",
         "numsym": "A senha deve conter pelo menos um símbolo (!, @, #, $, %, &, *, ?) e um número (0-9)"
       }
+    },
+    "success": {
+      "success": "Success",
+      "text": "Conta criada com sucesso"
     }
   }
 }

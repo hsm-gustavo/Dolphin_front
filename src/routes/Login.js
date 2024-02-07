@@ -1,19 +1,20 @@
 import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Input from "../components/Input";
 
 const Login = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
-  const getLogin = async ({ username, password }) => {
+  const getLogin = async ({ email, password }) => {
     return await fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     }).then((res) => res.json());
     /* .then((data) => {
         console.log(data);
@@ -23,9 +24,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const username = e.target.username.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
-    const response = await getLogin({ username, password });
+    const response = await getLogin({ email, password });
     if ("user" in response) {
       Swal.fire({
         icon: "success",
@@ -34,7 +35,7 @@ const Login = () => {
         timer: 2000,
         confirmButtonColor: "rgb(59, 130, 249)",
       }).then((value) => {
-        window.location.href = "/home";
+        navigate("/home");
       });
     } else {
       Swal.fire({
@@ -60,10 +61,10 @@ const Login = () => {
         >
           <Input
             classNameLabel={["text-left", "font-semibold"]}
-            htmlFor={"username"}
+            htmlFor={"email"}
             label={t("login.email")}
             type={"email"}
-            name={"username"}
+            name={"email"}
             placeholder={t("login.email")}
             required={true}
             className={[

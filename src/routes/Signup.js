@@ -3,6 +3,7 @@ import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const { t } = useTranslation();
@@ -61,7 +62,7 @@ const Signup = () => {
     return { isValid: true, message: "" };
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const firstName = capitalize(e.target.firstName.value);
     const lastName = capitalize(e.target.lastName.value);
@@ -85,6 +86,42 @@ const Signup = () => {
 
     setEmailValidation({ isValid: true, message: "" });
     setPasswordValidation({ isValid: true, message: "" });
+
+    const response = await fetch("http://localhost:3001/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ firstName, lastName, email, password }),
+    }).then((res) => res.json());
+
+    if (response.success){
+      Swal.fire({
+        icon: "success",
+        title: t("signup.success.success"),
+        text: t("signup.success.text"),
+        timer: 2000,
+        confirmButtonColor: "rgb(59, 130, 249)",
+      }).then((value) => {
+        window.location.href = "/login";
+      });
+    } else {
+      if(response.message === "Email already in use"){
+        Swal.fire({
+          icon: "error",
+          title: t("signup.error.error"),
+          text: t("signup.error.inUse"),
+          timer: 2000,
+        });
+        return;
+      }
+      Swal.fire({
+        icon: "error",
+        title: t("signup.error.error"),
+        text: t("signup.error.text"),
+        timer: 2000,
+      });
+    }
   };
 
   return (
