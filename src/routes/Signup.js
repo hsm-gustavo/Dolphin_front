@@ -16,6 +16,10 @@ const Signup = () => {
     message: "",
   });
 
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   const validatePassword = (password, confirmPassword) => {
     if (password !== confirmPassword) {
       return { isValid: false, message: t("signup.error.password.match") };
@@ -59,8 +63,8 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const firstName = e.target.firstName.value;
-    const lastName = e.target.lastName.value;
+    const firstName = capitalize(e.target.firstName.value);
+    const lastName = capitalize(e.target.lastName.value);
 
     const email = e.target.email.value;
     const password = e.target.password.value;
