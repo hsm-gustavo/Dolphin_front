@@ -8,23 +8,25 @@ import Error from "./routes/Error";
 import reportWebVitals from "./reportWebVitals";
 import "./constants/i18n";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import Signup from "./routes/Signup";
+import NavbarWrapper from "./components/NavbarWrapper";
 
 const loadingMarkup = (
   <div className="flex h-screen w-full items-center justify-center">
-    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-950"></div>
+    <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-t-2 border-blue-950"></div>
   </div>
 );
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <NavbarWrapper />,
     errorElement: <Error />,
-  },
-  {
-    path: "/login",
-    element: <Login />,    
+    children: [
+      { path: "/", element: <App /> },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
+    ],
   },
 ]);
 
@@ -32,8 +34,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
-      <Navbar />
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </React.StrictMode>
   </Suspense>,
 );
