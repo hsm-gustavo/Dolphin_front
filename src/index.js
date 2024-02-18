@@ -9,7 +9,7 @@ import "./constants/i18n";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./routes/Signup";
 import NavbarWrapper from "./components/NavbarWrapper";
-import Editor from "./routes/Editor";
+import EditorPage from "./routes/EditorPage";
 
 const loadingMarkup = (
   <div className="flex h-screen w-full items-center justify-center">
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: "/", element: <App /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
-      { path: "/editor", element: <Editor />},
+      { path: "/editor", element: <EditorPage />},
     ],
   },
 ]);
