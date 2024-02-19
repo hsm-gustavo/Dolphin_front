@@ -41,9 +41,10 @@ const EditorPage = () => {
             ref={editor}
           />
         </div>
+        {/* TODO -> look for this https://github.com/jpuri/react-draft-wysiwyg */}
         <Toolbar>
           {(externalProps) => (
-            <nav className="">
+            <nav className="w-[52em]">
               <BoldButton {...externalProps} />
               <ItalicButton {...externalProps} />
               <UnderlineButton {...externalProps} />
