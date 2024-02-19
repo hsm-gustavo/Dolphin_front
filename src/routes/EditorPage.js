@@ -1,47 +1,59 @@
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { EditorState } from "draft-js";
+import Editor from "@draft-js-plugins/editor";
+import createToolbarPlugin from "@draft-js-plugins/static-toolbar";
+import createTextAlignmentPlugin from "@draft-js-plugins/text-alignment";
+import "@draft-js-plugins/static-toolbar/lib/plugin.css";
+import "@draft-js-plugins/text-alignment/lib/plugin.css";
 import { useState } from "react";
 import "draft-js/dist/Draft.css";
-import bold from "../assets/bold.svg";
-import italic from "../assets/italic.svg";
-import underline from "../assets/underline.svg";
-import strikethrough from "../assets/strikethrough.svg";
+import {
+  BoldButton,
+  ItalicButton,
+  UnderlineButton,
+  BlockquoteButton,
+  UnorderedListButton,
+  OrderedListButton
+} from "@draft-js-plugins/buttons";
+import { useRef } from "react";
 
+const toolbarPlugin = createToolbarPlugin();
+const textAlignmentPlugin = createTextAlignmentPlugin();
+
+const { Toolbar } = toolbarPlugin;
+const plugins = [toolbarPlugin, textAlignmentPlugin];
 
 const EditorPage = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const editor = useRef(null);
 
-  const INLINE_STYLES = [
-    { label: "Bold", img: bold, style: "BOLD" },
-    { label: "Italic", img: italic, style: "ITALIC" },
-    { label: "Underline", img: underline, style: "UNDERLINE" },
-    { label: "Strikethrough", img: strikethrough, style: "STRIKETHROUGH" },
-  ];
+  const onChange = (editorState) => {
+    setEditorState(editorState);
+  };
 
   return (
     <div className="h-full bg-blue-900">
-      <nav>
-        <ul className="flex justify-center p-5 bg-blue-900">
-          {INLINE_STYLES.map((type) => (
-            <li key={type.label} className="mr-5">
-              <button
-                className="text-white bg-blue-500 rounded-md px-3 py-1"
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                  setEditorState(
-                    RichUtils.toggleInlineStyle(editorState, type.style)
-                  );
-                }}
-              >
-                <img src={type.img} alt={type.label} className="w-5"/>
-              </button>
-            </li>
-          ))}
-        </ul>        
-      </nav>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col-reverse items-center justify-center">
         <div className="w-full max-w-[52em] h-[69.3em] p-[10px] mt-3 mb-10 bg-white border-2 border-gray-300 shadow-lg">
-          <Editor editorState={editorState} onChange={setEditorState} />
+          <Editor
+            editorState={editorState}
+            onChange={onChange}
+            plugins={plugins}
+            ref={editor}
+          />
         </div>
+        <Toolbar>
+          {(externalProps) => (
+            <nav className="">
+              <BoldButton {...externalProps} />
+              <ItalicButton {...externalProps} />
+              <UnderlineButton {...externalProps} />
+              <BlockquoteButton {...externalProps} />
+              <UnorderedListButton {...externalProps} />
+              <OrderedListButton {...externalProps} />
+              <textAlignmentPlugin.TextAlignment {...externalProps} />
+            </nav>
+          )}
+        </Toolbar>
       </div>
     </div>
   );
