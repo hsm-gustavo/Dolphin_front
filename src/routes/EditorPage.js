@@ -15,7 +15,8 @@ import {
   toolbarPlugin,
   InsertThematicBreak,
   Separator,
-  ButtonWithTooltip
+  ButtonWithTooltip,
+  ButtonOrDropdownButton,
 } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
 
@@ -27,7 +28,6 @@ const EditorPage = () => {
     const markdown = mdxRef.current.getMarkdown();
     const title = titleRef.current.value;
   };
-
   useEffect(() => {
     mdxRef.current.focus();
   }
@@ -44,7 +44,7 @@ const EditorPage = () => {
       <div className="w-[52em] min-h-[69.3em] mt-10 bg-white border-2 border-gray-300 shadow-lg p-[10px] mb-10 rounded-md">
         <MDXEditor
           placeholder="Write something here..."
-          markdown="Write something here..."
+          markdown="Write something here... (you can also use markdown!)"
           plugins={[
             toolbarPlugin({
               toolbarContents: () => (
@@ -62,6 +62,17 @@ const EditorPage = () => {
                   <ButtonWithTooltip onClick={handleSave} title="Save document">
                     <span className="text-xl p-1 select-none">&#128426;</span>
                   </ButtonWithTooltip>
+                  <ButtonOrDropdownButton items={
+                    [
+                      { label: "PDF (.pdf)", onClick: handleSave },
+                      { label: "OpenDocument (.odt)", onClick: handleSave },
+                      { label: "Word Document (.docx)", onClick: handleSave },
+                    ]
+                  } title="Export document as..."
+                  >
+                    <span className="p-1 select-none">Export as...</span>
+                    
+                  </ButtonOrDropdownButton>
                 </>
               )
             }),
@@ -73,7 +84,7 @@ const EditorPage = () => {
             markdownShortcutPlugin()
           ]}
           className="w-full h-full"
-          contentEditableClassName="prose lg:prose-xl max-w-none max-h-[69em] overflow-y-auto"
+          contentEditableClassName="prose lg:prose-xl lg:leading-none max-w-none max-h-[69em] leading-none overflow-y-auto"
           ref={mdxRef}
         />
       </div>
