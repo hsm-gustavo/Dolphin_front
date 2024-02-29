@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 const Signup = () => {
   const { t } = useTranslation();
 
+  /* signup api */
+
   const [emailValidation, setEmailValidation] = useState({
     isValid: true,
     message: "",

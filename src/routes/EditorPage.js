@@ -24,6 +24,8 @@ const EditorPage = () => {
   const mdxRef = useRef(null);
   const titleRef = useRef(null);
 
+  /* saving logic with api, retrieve document from api, use server to export document */
+
   const handleSave = () => {
     const markdown = mdxRef.current.getMarkdown();
     const title = titleRef.current.value;

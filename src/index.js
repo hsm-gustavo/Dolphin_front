@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./routes/Signup";
 import NavbarWrapper from "./components/NavbarWrapper";
 import EditorPage from "./routes/EditorPage";
+import Documents from "./routes/Documents";
 
 const loadingMarkup = (
   <div className="flex h-screen w-full items-center justify-center">
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/editor", element: <EditorPage />},
+      { path: "/documents", element: <Documents/>},
     ],
   },
 ]);

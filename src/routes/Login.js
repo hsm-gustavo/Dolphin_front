@@ -8,6 +8,8 @@ const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  /* login api */
+
   const getLogin = async ({ email, password }) => {
     return await fetch("http://localhost:3001/login", {
       method: "POST",
