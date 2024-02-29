@@ -9,6 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./constants/i18n";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./routes/Signup";
+import Menu from "./routes/Menu";
 import NavbarWrapper from "./components/NavbarWrapper";
 
 const loadingMarkup = (
@@ -26,6 +27,8 @@ const router = createBrowserRouter([
       { path: "/", element: <App /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
+      { path: "/menu", element: <Menu />},
+      //{ path: "/editor/:id", element: <EditorPage />}
     ],
   },
 ]);
