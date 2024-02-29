@@ -16,6 +16,9 @@ function App() {
       <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
         <Link to={"/signup"}>Sign up</Link>
       </button>
+      <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
+        <Link to={"/editor"}>Editor</Link>
+      </button>
     </div>
   );
 }

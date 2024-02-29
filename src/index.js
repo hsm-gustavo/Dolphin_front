@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Navbar from "./components/Navbar";
 import Login from "./routes/Login";
 import Error from "./routes/Error";
 import reportWebVitals from "./reportWebVitals";
@@ -11,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./routes/Signup";
 import Menu from "./routes/Menu";
 import NavbarWrapper from "./components/NavbarWrapper";
+import EditorPage from "./routes/EditorPage";
 
 const loadingMarkup = (
   <div className="flex h-screen w-full items-center justify-center">
@@ -27,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/", element: <App /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
+      { path: "/editor", element: <EditorPage />},
       { path: "/menu", element: <Menu />},
       //{ path: "/editor/:id", element: <EditorPage />}
     ],
