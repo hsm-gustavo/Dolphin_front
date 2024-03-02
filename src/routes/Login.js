@@ -1,8 +1,18 @@
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Login = () => {
   let i = 0;
+
+  const [data, setData] = useState("");
+
+  let getData = async () => {
+    setData((await Axios.get("http://localhost:5000/login/")).data);
+  }
+
+  useEffect(() => { getData().then(() => { console.log("GET Route") }) }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
