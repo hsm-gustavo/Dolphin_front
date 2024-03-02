@@ -16,7 +16,7 @@ import {
   InsertThematicBreak,
   Separator,
   ButtonWithTooltip,
-  ButtonOrDropdownButton,
+  ButtonOrDropdownButton
 } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
 
@@ -24,7 +24,7 @@ const EditorPage = () => {
   const mdxRef = useRef(null);
   const titleRef = useRef(null);
 
-  /* saving logic with api, retrieve document from api, use server to export document */
+  /* saving logic with api (needs id), retrieve document from api (should be in other route), use server to export document */
 
   const handleSave = () => {
     const markdown = mdxRef.current.getMarkdown();
@@ -32,8 +32,7 @@ const EditorPage = () => {
   };
   useEffect(() => {
     mdxRef.current.focus();
-  }
-  , []);
+  }, []);
 
   return (
     <div className="h-full bg-blue-900 flex flex-col justify-center items-center">
@@ -64,16 +63,15 @@ const EditorPage = () => {
                   <ButtonWithTooltip onClick={handleSave} title="Save document">
                     <span className="text-xl p-1 select-none">&#128426;</span>
                   </ButtonWithTooltip>
-                  <ButtonOrDropdownButton items={
-                    [
+                  <ButtonOrDropdownButton
+                    items={[
                       { label: "PDF (.pdf)", onClick: handleSave },
                       { label: "OpenDocument (.odt)", onClick: handleSave },
-                      { label: "Word Document (.docx)", onClick: handleSave },
-                    ]
-                  } title="Export document as..."
+                      { label: "Word Document (.docx)", onClick: handleSave }
+                    ]}
+                    title="Export document as..."
                   >
                     <span className="p-1 select-none">Export as...</span>
-                    
                   </ButtonOrDropdownButton>
                 </>
               )
