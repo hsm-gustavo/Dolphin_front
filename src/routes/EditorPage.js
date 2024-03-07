@@ -15,7 +15,8 @@ import {
   toolbarPlugin,
   InsertThematicBreak,
   Separator,
-  ButtonWithTooltip
+  ButtonWithTooltip,
+  ButtonOrDropdownButton
 } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
 
@@ -62,6 +63,16 @@ const EditorPage = () => {
                   <ButtonWithTooltip onClick={handleSave} title="Save document">
                     <span className="text-xl p-1 select-none">&#128426;</span>
                   </ButtonWithTooltip>
+                  <ButtonOrDropdownButton
+                    items={[
+                      { label: "PDF (.pdf)", onClick: handleSave },
+                      { label: "OpenDocument (.odt)", onClick: handleSave },
+                      { label: "Word Document (.docx)", onClick: handleSave }
+                    ]}
+                    title="Export document as..."
+                  >
+                    <span className="p-1 select-none">Export as...</span>
+                  </ButtonOrDropdownButton>
                 </>
               )
             }),
