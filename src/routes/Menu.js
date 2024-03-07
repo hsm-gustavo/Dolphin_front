@@ -16,7 +16,7 @@ const Menu = () => {
 
     return(
         <>
-            <div className="">
+            <div className="h-screen bg-blue-900 pt-20">
                 <div className="grid grid-cols-6 gap-2">
                     {
                     usernotes.map((note) => (<Link to={`/editor/${note.id}`}><Noteblock noteid={note.id} title={note.title}/></Link>))
