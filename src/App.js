@@ -1,24 +1,26 @@
 import { Link } from "react-router-dom";
+import logo from "./assets/logowhite.svg";
 
 function App() {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blue-900 text-center">
-      {/* TODO -> see react-router-dom v6.x */}
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsam
-        provident ducimus reiciendis ullam adipisci. Ea rerum ratione aperiam,
-        consectetur ullam magni a laudantium veniam culpa. Voluptatum fugit
-        laudantium ea.
+      <img src={logo} alt="logo" className="w-40"/>
+      <h1 className="text-7xl text-white font-semibold mb-10">Dolphin</h1>
+      <h1 className="text-4xl font-semibold text-white">
+        The modern way to write.
+      </h1>
+      <p className="text-xl text-white mb-20">
+        A beautiful, distraction-free writing experience with support for rich
+        formatting
       </p>
-      <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
-        <Link to={"/login"}>Login</Link>
-      </button>
-      <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
-        <Link to={"/signup"}>Sign up</Link>
-      </button>
-      <button className="rounded-lg bg-white p-2 text-black transition duration-300 ease-in-out hover:bg-slate-200">
-        <Link to={"/editor"}>Editor</Link>
-      </button>
+      <div>
+        <button className="rounded-lg bg-white p-2 px-10 text-black transition duration-300 ease-in-out hover:bg-slate-200 mr-4">
+          <Link to={"/login"} className="text-xl">Login</Link>
+        </button>
+        <button className="rounded-lg bg-white p-2 px-8 text-black transition duration-300 ease-in-out hover:bg-slate-200">
+          <Link to={"/signup"} className="text-xl">Sign up</Link>
+        </button>
+      </div>
     </div>
   );
 }

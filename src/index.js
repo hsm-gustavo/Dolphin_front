@@ -5,7 +5,6 @@ import App from "./App";
 import Login from "./routes/Login";
 import Error from "./routes/Error";
 import reportWebVitals from "./reportWebVitals";
-import "./constants/i18n";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./routes/Signup";
 import Menu from "./routes/Menu";

@@ -2,11 +2,9 @@ import Input from "../components/Input";
 import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
 
 const Signup = () => {
-  const { t } = useTranslation();
 
   const [emailValidation, setEmailValidation] = useState({
     isValid: true,
@@ -23,13 +21,13 @@ const Signup = () => {
 
   const validatePassword = (password, confirmPassword) => {
     if (password !== confirmPassword) {
-      return { isValid: false, message: t("signup.error.password.match") };
+      return { isValid: false, message: "Passwords do not match" };
     }
 
     if (password.length < 8) {
       return {
         isValid: false,
-        message: t("signup.error.password.length"),
+        message: "Password must be at least 8 characters long",
       };
     }
 
@@ -39,7 +37,7 @@ const Signup = () => {
       return {
         isValid: false,
         message:
-          t("signup.error.password.numsym"),
+          "Password must contain at least a symbol (!, @, #, $, %, &, *, ?) and a number (0-9)"
       };
     }
 
@@ -47,7 +45,7 @@ const Signup = () => {
       return {
         isValid: false,
         message:
-          t("signup.error.password.numsym"),
+          "Password must contain at least a symbol (!, @, #, $, %, &, *, ?) and a number (0-9)"
       };
     }
 
@@ -57,7 +55,7 @@ const Signup = () => {
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     if (!re.test(email)) {
-      return { isValid: false, message: t("signup.error.email") };
+      return { isValid: false, message: "Invalid Email" };
     }
     return { isValid: true, message: "" };
   };
@@ -98,10 +96,10 @@ const Signup = () => {
     if (response.success){
       Swal.fire({
         icon: "success",
-        title: t("signup.success.success"),
-        text: t("signup.success.text"),
+        title: "Success",
+        text: "Signup successful",
         timer: 2000,
-        confirmButtonColor: "rgb(59, 130, 249)",
+        confirmButtonColor: "rgb(59, 130, 249)"
       }).then((value) => {
         window.location.href = "/login";
       });
@@ -109,16 +107,16 @@ const Signup = () => {
       if(response.message === "Email already in use"){
         Swal.fire({
           icon: "error",
-          title: t("signup.error.error"),
-          text: t("signup.error.inUse"),
-          timer: 2000,
+          title: "Error",
+          text: "Email already in use",
+          timer: 2000
         });
         return;
       }
       Swal.fire({
         icon: "error",
-        title: t("signup.error.error"),
-        text: t("signup.error.text"),
+        title: "Error",
+        text: "Signup failed",
         timer: 2000,
       });
     }
@@ -129,9 +127,9 @@ const Signup = () => {
       <div className="flex h-full w-full flex-col items-center justify-center bg-white px-5 text-center shadow-2xl sm:h-5/6 md:w-6/12 md:rounded-3xl">
         <img src={logo} alt="logo" className="w-28 " />
         <div className="my-10 flex flex-col items-center justify-center">
-          <h1 className="text-3xl font-bold">{t("signup.signup")}</h1>
+          <h1 className="text-3xl font-bold">Sign Up</h1>
           <p className="text-lg text-slate-500">
-            {t("signup.msg")}
+            Enter your details to create an account
           </p>
         </div>
         <form className="mx-5 flex flex-col" onSubmit={(e) => handleSubmit(e)}>
@@ -139,10 +137,10 @@ const Signup = () => {
             <Input
               htmlFor={"firstName"}
               classNameLabel={["col-start-1", "text-left", "font-semibold"]}
-              label={t("signup.firstName")}
+              label={"First Name"}
               type="text"
               name="firstName"
-              placeholder={t("signup.firstName")}
+              placeholder={"First Name"}
               className={[
                 "col-start-1",
                 "row-start-2",
@@ -154,17 +152,17 @@ const Signup = () => {
                 "py-1",
                 "focus:outline-none",
                 "focus:ring-2",
-                "focus:ring-slate-400",
+                "focus:ring-slate-400"
               ]}
               required={true}
             />
             <Input
               htmlFor={"lastName"}
               classNameLabel={["col-start-2", "text-left", "font-semibold"]}
-              label={t("signup.lastName")}
+              label={"Last Name"}
               type="text"
               name="lastName"
-              placeholder={t("signup.lastName")}
+              placeholder={"Last Name"}
               required={true}
               className={[
                 "col-start-2",
@@ -177,7 +175,7 @@ const Signup = () => {
                 "py-1",
                 "focus:outline-none",
                 "focus:ring-2",
-                "focus:ring-slate-400",
+                "focus:ring-slate-400"
               ]}
             />
           </div>
@@ -198,7 +196,7 @@ const Signup = () => {
               "py-1",
               "focus:outline-none",
               "focus:ring-2",
-              "focus:ring-slate-400",
+              "focus:ring-slate-400"
             ]}
             validation={emailValidation}
           />
@@ -206,10 +204,10 @@ const Signup = () => {
             <Input
               htmlFor={"password"}
               classNameLabel={["col-start-1", "text-left", "font-semibold"]}
-              label={t("signup.password")}
+              label={"Password"}
               type="password"
               name="password"
-              placeholder={t("signup.password")}
+              placeholder={"Password"}
               required={true}
               className={[
                 "col-start-1",
@@ -222,17 +220,17 @@ const Signup = () => {
                 "py-1",
                 "focus:outline-none",
                 "focus:ring-2",
-                "focus:ring-slate-400",
+                "focus:ring-slate-400"
               ]}
               validation={passwordValidation}
             />
             <Input
               htmlFor={"confirmPassword"}
               classNameLabel={["col-start-2", "text-left", "font-semibold"]}
-              label={t("signup.confirm")}
+              label={"Confirm Password"}
               type="password"
               name="confirmPassword"
-              placeholder={t("signup.confirm")}
+              placeholder={"Confirm Password"}
               required={true}
               className={[
                 "col-start-2",
@@ -245,20 +243,20 @@ const Signup = () => {
                 "py-1",
                 "focus:outline-none",
                 "focus:ring-2",
-                "focus:ring-slate-400",
+                "focus:ring-slate-400"
               ]}
             />
           </div>
           <input
             type="submit"
-            value={t("signup.signup")}
+            value={"Sign Up"}
             className="my-10 rounded-lg bg-black py-2 text-white hover:bg-slate-900"
           />
         </form>
         <p>
-          {t("signup.acc")}{" "}
+          {"Already have an account?"}{" "}
           <Link to="/login" className="underline">
-            {t("signup.login")}
+            {"Login"}
           </Link>
         </p>
       </div>

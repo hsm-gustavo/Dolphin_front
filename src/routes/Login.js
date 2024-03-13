@@ -1,11 +1,9 @@
-import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Input from "../components/Input";
 
 const Login = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const getLogin = async ({ email, password }) => {
@@ -30,8 +28,8 @@ const Login = () => {
     if ("user" in response) {
       Swal.fire({
         icon: "success",
-        title: t("login.success.success"),
-        text: t("login.success.text"),
+        title: "Success",
+        text: "Login successful",
         timer: 2000,
         confirmButtonColor: "rgb(59, 130, 249)",
       }).then((value) => {
@@ -40,8 +38,8 @@ const Login = () => {
     } else {
       Swal.fire({
         icon: "error",
-        title: t("login.error.error"),
-        text: t("login.error.text"),
+        title: "Error",
+        text: "Login failed",
         timer: 2000,
       });
     }
@@ -52,8 +50,10 @@ const Login = () => {
       <div className="flex h-full w-full flex-col items-center justify-center bg-white px-5 text-center shadow-2xl sm:h-5/6 md:w-6/12 md:rounded-3xl">
         <img src={logo} alt="logo" className="w-28" />
         <div className="my-10 flex flex-col items-center justify-center">
-          <h1 className="text-3xl font-bold">{t("login.login")}</h1>
-          <p className="text-lg text-slate-500">{t("login.msg")}</p>
+          <h1 className="text-3xl font-bold">Login</h1>
+          <p className="text-lg text-slate-500">
+            Enter your email and password to login to your account
+          </p>
         </div>
         <form
           className="grid w-full grid-flow-row px-6"
@@ -62,10 +62,10 @@ const Login = () => {
           <Input
             classNameLabel={["text-left", "font-semibold"]}
             htmlFor={"email"}
-            label={t("login.email")}
+            label={"Email"}
             type={"email"}
             name={"email"}
-            placeholder={t("login.email")}
+            placeholder={"Email"}
             required={true}
             className={[
               "my-2",
@@ -77,16 +77,16 @@ const Login = () => {
               "col-span-2",
               "focus:outline-none",
               "focus:ring-2",
-              "focus:ring-slate-400",
+              "focus:ring-slate-400"
             ]}
           />
           <Input
             classNameLabel={["mb-2", "text-left", "font-semibold"]}
             htmlFor={"password"}
-            label={t("login.password")}
+            label={"Password"}
             type={"password"}
             name={"password"}
-            placeholder={t("login.password")}
+            placeholder={"Password"}
             required={true}
             className={[
               "my-2",
@@ -98,21 +98,21 @@ const Login = () => {
               "col-span-2",
               "focus:outline-none",
               "focus:ring-2",
-              "focus:ring-slate-400",
+              "focus:ring-slate-400"
             ]}
           />
-          <Link to={123} className="col-span-2 font-medium underline">
-            {t("login.forgot")}
-          </Link>
+          {/* <Link to={123} className="col-span-2 font-medium underline">
+            {"Forgot password?"}
+          </Link> */}
           <input
             type="submit"
-            value={t("login.login")}
+            value={"Login"}
             className="col-span-2 my-10 rounded-lg bg-black py-2 text-white hover:bg-slate-900"
           />
           <p className="col-span-2">
-            {t("login.acc")}{" "}
+            {"Don't have an account?"}{" "}
             <Link to={"/signup"} className="underline">
-              {t("login.signup")}
+              {"Sign Up"}
             </Link>
           </p>
         </form>
