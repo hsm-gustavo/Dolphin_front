@@ -14,10 +14,10 @@ function App() {
         formatting
       </p>
       <div>
-        <button className="rounded-lg bg-white p-2 px-10 text-black transition duration-300 ease-in-out hover:bg-slate-200 mr-4">
+        <button className="rounded-lg bg-black p-2 px-10 text-white transition duration-300 ease-in-out hover:bg-slate-900 mr-4">
           <Link to={"/login"} className="text-xl">Login</Link>
         </button>
-        <button className="rounded-lg bg-white p-2 px-8 text-black transition duration-300 ease-in-out hover:bg-slate-200">
+        <button className="rounded-lg bg-black p-2 px-8 text-white transition duration-300 ease-in-out hover:bg-slate-900">
           <Link to={"/signup"} className="text-xl">Sign up</Link>
         </button>
       </div>
