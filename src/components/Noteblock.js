@@ -1,13 +1,15 @@
-const Noteblock = ({title}) => {
-    return(
-        <div className="h-44 bg-yellow-500 rounded-lg shadow-md shadow-blue-500/50">
-            <div id="title">
-                <p className="text-xl">{title}</p>
-                <div className="bg-red-600 h-3 w-10 rounded-xl"/>
-                <p>Aberto há xx horas</p>
-            </div>
-        </div>
-    );
-}
+import bin from "../assets/bin.svg";
+
+const Noteblock = ({ title, date }) => {
+  return (
+    <div className="bg-white flex flex-row justify-between items-center w-8/12 rounded-xl mb-5">
+      <p className="text-xl text-slate-500 ml-5">{title}</p>
+      <div className="flex flex-row justify-between items-center mr-2">
+        <p className="text-xl text-slate-500">{date}</p>
+        <img src={bin} alt="bin" className="w-12" />
+      </div>
+    </div>
+  );
+};
 
 export default Noteblock;
