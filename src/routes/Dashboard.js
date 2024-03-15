@@ -1,6 +1,7 @@
 import Noteblock from "../components/Noteblock";
 import { Link } from "react-router-dom";
 import add from "../assets/add.svg";
+import {useEffect, useState} from "react";
 
 const Dashboard = () => {
   const usernotes = [
@@ -13,6 +14,14 @@ const Dashboard = () => {
     { id: 7, title: "aaaaaa", date: "13/03/2024" },
     { id: 8, title: "aaababababbaa", date: "13/03/2024" }
   ]; //Get notes id from api
+
+
+  // useEffect(async () => {
+  //   const response = await fetch("https://dolphin-back.onrender.com/dashboard/:user");
+  //   const jsonData = await response.json();
+  //   console.log("------------------------------------");
+  //   console.log(jsonData)
+  // });
 
   return (
     <div className="h-screen bg-blue-900 pt-20 flex flex-col items-center overflow-y-scroll">
