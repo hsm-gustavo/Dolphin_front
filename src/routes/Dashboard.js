@@ -16,12 +16,13 @@ const Dashboard = () => {
   ]; //Get notes id from api
 
 
-  // useEffect(async () => {
-  //   const response = await fetch("https://dolphin-back.onrender.com/dashboard/:user");
-  //   const jsonData = await response.json();
-  //   console.log("------------------------------------");
-  //   console.log(jsonData)
-  // });
+  useEffect(async () => {
+    // é preciso buscar o usuário e suas notas
+    const responseDashboard = await fetch("https://dolphin-back.onrender.com/dashboard/:user");
+    const jsonData = await response.json();
+    console.log("------------------------------------");
+    console.log(jsonData)
+  });
 
   return (
     <div className="h-screen bg-blue-900 pt-20 flex flex-col items-center overflow-y-scroll">
