@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -23,14 +23,15 @@ const router = createBrowserRouter([
     element: <NavbarWrapper />,
     errorElement: <Error />,
     children: [
-      { path: "/", element: <App /> },
+      { path: "/", element: <App />,  },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
-      { path: "/editor", element: <EditorPage />},
-      { path: "/dashboard", element: <Dashboard />},
+      { path: "/editor/:user/new", element: <EditorPage /> },
+      { path: "/editor/:user/:note/:date", element: <EditorPage /> },
+      { path: "/dashboard/:user", element: <Dashboard /> }
       //{ path: "/editor/:id", element: <EditorPage />}
-    ],
-  },
+    ]
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

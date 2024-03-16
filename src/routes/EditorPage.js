@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   MDXEditor,
   headingsPlugin,
@@ -21,18 +21,25 @@ import {
 import "@mdxeditor/editor/style.css";
 
 const EditorPage = () => {
+
+  const getDate = (date = new Date()) => {
+    return `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`;
+  };
+  const user = localStorage.getItem("username");
+
   const mdxRef = useRef(null);
   const titleRef = useRef(null);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const markdown = mdxRef.current.getMarkdown();
     const title = titleRef.current.value;
   };
 
+  // needs ID
+
   useEffect(() => {
     mdxRef.current.focus();
-  }
-  , []);
+  }, []);
 
   return (
     <div className="h-full bg-blue-900 flex flex-col justify-center items-center">

@@ -2,22 +2,17 @@ import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Input from "../components/Input";
-import {useEffect, useState} from "react";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const [postData, setPostData] = useState({}); // Estado para os dados a serem enviados
-  const [response, setResponse] = useState(null); // Estado para a resposta da requisição
-  const [error, setError] = useState(null); // Estado para possíveis erros
-
   const postLogin = async ({ username, password }) => {
-    return await fetch("http://localhost:27017/login", {
+    return await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     }).then((res) => res.json());
     /* .then((data) => {
         console.log(data);
@@ -30,24 +25,26 @@ const Login = () => {
     const username = e.target.username.value;
     const password = e.target.password.value;
     const response = await postLogin({ username, password });
-    console.log(response)
+    console.log(response);
 
-    if ("user" in response) {
+    if ("username" in response) {
       Swal.fire({
         icon: "success",
         title: "Success",
         text: "Login successful",
         timer: 2000,
-        confirmButtonColor: "rgb(59, 130, 249)",
+        confirmButtonColor: "rgb(59, 130, 249)"
       }).then((value) => {
-        navigate("/dashboard");
+        navigate(`/dashboard/${response.username}`);
       });
+      localStorage.setItem("name", response.name);
+      localStorage.setItem("username", response.username);
     } else {
-       Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Login failed",
-          timer: 2000,
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Login failed",
+        timer: 2000
       });
     }
   };
@@ -66,7 +63,6 @@ const Login = () => {
           className="grid w-full grid-flow-row px-6"
           onSubmit={(e) => handleSubmit(e)}
         >
-
           <Input
             classNameLabel={["text-left", "font-semibold"]}
             htmlFor={"username"}

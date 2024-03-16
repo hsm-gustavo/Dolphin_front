@@ -85,7 +85,7 @@ const Signup = () => {
     setEmailValidation({ isValid: true, message: "" });
     setPasswordValidation({ isValid: true, message: "" });
 
-    const response = await fetch("http://localhost:3001/signup", {
+    const response = await fetch("http://localhost:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
