@@ -66,6 +66,7 @@ const Signup = () => {
     const lastName = capitalize(e.target.lastName.value);
 
     const email = e.target.email.value;
+    const username = e.target.username.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
 
@@ -85,15 +86,16 @@ const Signup = () => {
     setEmailValidation({ isValid: true, message: "" });
     setPasswordValidation({ isValid: true, message: "" });
 
+    const fullName = `${firstName} ${lastName}`;
     const response = await fetch("http://localhost:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ firstName, lastName, email, password }),
-    }).then((res) => res.json());
+      body: JSON.stringify({ name: fullName, username, password }),
+    });
 
-    if (response.success){
+    if (response){
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -199,6 +201,26 @@ const Signup = () => {
               "focus:ring-slate-400"
             ]}
             validation={emailValidation}
+          />
+          <Input
+            htmlFor={"username"}
+            classNameLabel={["text-left", "font-semibold"]}
+            label={"Username"}
+            type="text"
+            name="username"
+            placeholder="Username"
+            required={true}
+            className={[
+              "my-2",
+              "rounded-lg",
+              "border-2",
+              "border-slate-100",
+              "px-3",
+              "py-1",
+              "focus:outline-none",
+              "focus:ring-2",
+              "focus:ring-slate-400"
+            ]}
           />
           <div className="grid auto-rows-auto grid-cols-2 gap-x-4">
             <Input

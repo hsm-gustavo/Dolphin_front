@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import {
   MDXEditor,
   headingsPlugin,
@@ -19,8 +19,10 @@ import {
   ButtonOrDropdownButton
 } from "@mdxeditor/editor";
 import "@mdxeditor/editor/style.css";
+import { useParams } from "react-router-dom";
 
 const EditorPage = () => {
+  const id = useParams().id;
 
   const getDate = (date = new Date()) => {
     return `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`;
@@ -31,18 +33,38 @@ const EditorPage = () => {
   const titleRef = useRef(null);
 
   const handleSave = async () => {
-    const markdown = mdxRef.current.getMarkdown();
+    const content = mdxRef.current.getMarkdown();
     const title = titleRef.current.value;
-  };
 
-  // needs ID
+    return await fetch(`http://localhost:3000/notes/${user}/save`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ title: title, content: content, noteId: id })      
+    })
+  };
 
   useEffect(() => {
     mdxRef.current.focus();
-  }, []);
+    if(!window.location.pathname.includes("new")) {
+      const getNote = async () => {
+        return await fetch(`http://localhost:3000/notes/${user}/${id}`)
+          .then((res) => res.json())
+          .then((data) => {
+            mdxRef.current.setMarkdown(data.content);
+            titleRef.current.value = data.title;
+          });
+      };
+      getNote();
+    }
+  }, [id, user]);
 
   return (
     <div className="h-full bg-blue-900 flex flex-col justify-center items-center">
+      <h1 className="z-[51] absolute top-3 right-5 text-xl text-white m-auto">
+        {localStorage.getItem("name")}
+      </h1>
       <input
         type="text"
         className="text-4xl text-white text-center font-bold mt-20 bg-transparent border-none hover:bg-blue-800 transition-all py-2 rounded-xl placeholder:text-white"
