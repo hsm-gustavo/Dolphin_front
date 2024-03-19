@@ -16,7 +16,7 @@ const Noteblock = ({ title, date, id, user, updateDashboard }) => {
         alt="bin"
         className="w-12 rounded-full hover:bg-slate-200 mr-2"
         onClick={async () => {
-          await fetch(`http://localhost:3000/dashboard/${user}/delete/${id}`, {
+          await fetch(`http://localhost:3001/dashboard/${user}/delete/${id}`, {
             method: "DELETE",
           });
           updateDashboard();

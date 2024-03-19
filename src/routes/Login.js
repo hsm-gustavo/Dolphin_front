@@ -10,7 +10,7 @@ const Login = () => {
   const [disabled, setDisabled] = useState(false);
 
   const postLogin = async ({ username, password }) => {
-    return await fetch("http://localhost:3000/login", {
+    return await fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -30,7 +30,7 @@ const Login = () => {
     const password = e.target.password.value;
     const response = await postLogin({ username, password });
 
-    if ("username" in response) {
+    if (response.command === true) {
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -49,7 +49,7 @@ const Login = () => {
         title: "Error",
         text: "Login failed",
         timer: 2000
-      });
+      }).then((value) => setDisabled(false));
     }
     setDisabled(false);
   };

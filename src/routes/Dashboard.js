@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const getDashboard = async () => {
     const responseDashboard = await fetch(
-      `http://localhost:3000/notes/${user}`
+      `http://localhost:3001/notes/${user}`
     );
     const jsonData = await responseDashboard.json();
     setNotes(jsonData);
@@ -28,7 +28,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       const responseDashboard = await fetch(
-        `http://localhost:3000/notes/${user}`
+        `http://localhost:3001/notes/${user}`
       );
       const jsonData = await responseDashboard.json();
       setNotes(jsonData);
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
   const handleCreateNote = async () => {
     return await fetch(
-      `http://localhost:3000/dashboard/${user}/new`,
+      `http://localhost:3001/dashboard/${user}/new`,
       {
         method: "POST"
       }

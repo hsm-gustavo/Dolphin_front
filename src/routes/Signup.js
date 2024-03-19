@@ -1,10 +1,12 @@
 import Input from "../components/Input";
 import logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [disabled, setDisabled] = useState(false);
 
   const [emailValidation, setEmailValidation] = useState({
@@ -76,12 +78,14 @@ const Signup = () => {
 
     if (!passwordValidation.isValid) {
       setPasswordValidation(passwordValidation);
+      setDisabled(false);
       return;
     }
 
     const emailValidation = validateEmail(email);
     if (!emailValidation) {
       setEmailValidation(emailValidation);
+      setDisabled(false);
       return;
     }
 
@@ -89,7 +93,7 @@ const Signup = () => {
     setPasswordValidation({ isValid: true, message: "" });
 
     const fullName = `${firstName} ${lastName}`;
-    const response = await fetch("http://localhost:3000/signup", {
+    const response = await fetch("http://localhost:3001/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +101,7 @@ const Signup = () => {
       body: JSON.stringify({ name: fullName, username, password }),
     });
 
-    if (response){
+    if (response.status === 200) {
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -106,17 +110,16 @@ const Signup = () => {
         confirmButtonColor: "rgb(59, 130, 249)"
       }).then((value) => {
         setDisabled(false);
-        window.location.href = "/login";
+        navigate("/login");
       });
     } else {
-      if(response.message === "Email already in use"){
+      if(response.status === "409"){
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Email already in use",
+          text: "Username already in use",
           timer: 2000
-        });
-        setDisabled(false);
+        }).then((value) => setDisabled(false));
         return;
       }
       Swal.fire({
@@ -124,7 +127,7 @@ const Signup = () => {
         title: "Error",
         text: "Signup failed",
         timer: 2000,
-      });
+      }).then((value) => setDisabled(false));
     }
     setDisabled(false);
   };

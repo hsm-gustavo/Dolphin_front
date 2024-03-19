@@ -23,13 +23,13 @@ const router = createBrowserRouter([
     element: <NavbarWrapper />,
     errorElement: <Error />,
     children: [
-      { path: "/", element: <App />,  },
+      { path: "/", element: <App /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/editor/:user/new/:id", element: <EditorPage /> },
       { path: "/editor/:user/:id", element: <EditorPage /> },
-      { path: "/dashboard/:user", element: <Dashboard /> }
-      //{ path: "/editor/:id", element: <EditorPage />}
+      { path: "/dashboard/:user", element: <Dashboard /> },
+      { path: "*", element: <Error /> }
     ]
   }
 ]);
@@ -40,7 +40,7 @@ root.render(
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
-  </Suspense>,
+  </Suspense>
 );
 
 // If you want to start measuring performance in your app, pass a function
