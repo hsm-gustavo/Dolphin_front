@@ -1,13 +1,27 @@
 import bin from "../assets/bin.svg";
+import { Link } from "react-router-dom";
 
-const Noteblock = ({ title, date }) => {
+const Noteblock = ({ title, date, id, user, updateDashboard }) => {
   return (
     <>
-      <p className="text-xl text-slate-500 ml-5">{title}</p>
-      <div className="flex flex-row justify-between items-center mr-2">
+      <Link
+        to={`/editor/${user}/${id}`}
+        className="flex flex-row w-10/12 justify-between items-center"
+      >
+        <p className="text-xl text-slate-500 ml-5">{title}</p>
         <p className="text-xl text-slate-500">{date}</p>
-        <img src={bin} alt="bin" className="w-12" />
-      </div>
+      </Link>
+      <img
+        src={bin}
+        alt="bin"
+        className="w-12 rounded-full hover:bg-slate-200 mr-2"
+        onClick={async () => {
+          await fetch(`http://localhost:3000/dashboard/${user}/delete/${id}`, {
+            method: "DELETE",
+          });
+          updateDashboard();
+        }}
+      />
     </>
   );
 };

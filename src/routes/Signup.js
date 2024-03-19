@@ -5,6 +5,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const Signup = () => {
+  const [disabled, setDisabled] = useState(false);
 
   const [emailValidation, setEmailValidation] = useState({
     isValid: true,
@@ -62,6 +63,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
     const firstName = capitalize(e.target.firstName.value);
     const lastName = capitalize(e.target.lastName.value);
 
@@ -103,6 +105,7 @@ const Signup = () => {
         timer: 2000,
         confirmButtonColor: "rgb(59, 130, 249)"
       }).then((value) => {
+        setDisabled(false);
         window.location.href = "/login";
       });
     } else {
@@ -113,6 +116,7 @@ const Signup = () => {
           text: "Email already in use",
           timer: 2000
         });
+        setDisabled(false);
         return;
       }
       Swal.fire({
@@ -122,6 +126,7 @@ const Signup = () => {
         timer: 2000,
       });
     }
+    setDisabled(false);
   };
 
   return (
@@ -273,6 +278,7 @@ const Signup = () => {
             type="submit"
             value={"Sign Up"}
             className="my-10 rounded-lg bg-black py-2 text-white hover:bg-slate-900"
+            disabled={disabled}
           />
         </form>
         <p>

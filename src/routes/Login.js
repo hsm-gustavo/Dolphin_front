@@ -2,9 +2,12 @@ import logo from "../assets/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Input from "../components/Input";
+import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [disabled, setDisabled] = useState(false);
 
   const postLogin = async ({ username, password }) => {
     return await fetch("http://localhost:3000/login", {
@@ -21,11 +24,11 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    setDisabled(true);
     e.preventDefault();
     const username = e.target.username.value;
     const password = e.target.password.value;
     const response = await postLogin({ username, password });
-    console.log(response);
 
     if ("username" in response) {
       Swal.fire({
@@ -35,6 +38,7 @@ const Login = () => {
         timer: 2000,
         confirmButtonColor: "rgb(59, 130, 249)"
       }).then((value) => {
+        setDisabled(false);
         navigate(`/dashboard/${response.username}`);
       });
       localStorage.setItem("name", response.name);
@@ -47,7 +51,9 @@ const Login = () => {
         timer: 2000
       });
     }
+    setDisabled(false);
   };
+
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-blue-900">
@@ -62,6 +68,7 @@ const Login = () => {
         <form
           className="grid w-full grid-flow-row px-6"
           onSubmit={(e) => handleSubmit(e)}
+          
         >
           <Input
             classNameLabel={["text-left", "font-semibold"]}
@@ -112,6 +119,7 @@ const Login = () => {
             type="submit"
             value={"Login"}
             className="col-span-2 my-10 rounded-lg bg-black py-2 text-white hover:bg-slate-900"
+            disabled={disabled}
           />
           <p className="col-span-2">
             {"Don't have an account?"}{" "}
