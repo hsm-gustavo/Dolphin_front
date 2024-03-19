@@ -10,7 +10,7 @@ const Login = () => {
   const [disabled, setDisabled] = useState(false);
 
   const postLogin = async ({ username, password }) => {
-    return await fetch("http://localhost:3001/login", {
+    return await fetch("https://dolphin-back.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const getDashboard = async () => {
     const responseDashboard = await fetch(
-      `http://localhost:3001/notes/${user}`
+      `https://dolphin-back.onrender.com/notes/${user}`
     );
     const jsonData = await responseDashboard.json();
     setNotes(jsonData);
@@ -28,7 +28,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       const responseDashboard = await fetch(
-        `http://localhost:3001/notes/${user}`
+        `https://dolphin-back.onrender.com/notes/${user}`
       );
       const jsonData = await responseDashboard.json();
       setNotes(jsonData);
@@ -39,11 +39,13 @@ const Dashboard = () => {
 
   const handleCreateNote = async () => {
     return await fetch(
-      `http://localhost:3001/dashboard/${user}/new`,
+      `https://dolphin-back.onrender.com/dashboard/${user}/new`,
       {
         method: "POST"
       }
-    ).then((res) => res.json()).then((data) => navigate(`/editor/${user}/new/${data}`));
+    )
+      .then((res) => res.json())
+      .then((data) => navigate(`/editor/${user}/new/${data}`));
   };
 
   return (

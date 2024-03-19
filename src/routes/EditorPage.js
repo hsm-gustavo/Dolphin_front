@@ -38,7 +38,7 @@ const EditorPage = () => {
     const content = mdxRef.current.getMarkdown();
     const title = titleRef.current.value;
 
-    return await fetch(`http://localhost:3001/notes/${user}/save`, {
+    return await fetch(`https://dolphin-back.onrender.com/notes/${user}/save`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -67,7 +67,9 @@ const EditorPage = () => {
     if (!window.location.pathname.includes("new")) {
       setDisabled(true);
       const getNote = async () => {
-        return await fetch(`http://localhost:3001/notes/${user}/${id}`)
+        return await fetch(
+          `https://dolphin-back.onrender.com/notes/${user}/${id}`
+        )
           .then((res) => res.json())
           .then((data) => {
             mdxRef.current.setMarkdown(data.content);

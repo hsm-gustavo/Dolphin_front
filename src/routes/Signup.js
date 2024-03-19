@@ -93,12 +93,12 @@ const Signup = () => {
     setPasswordValidation({ isValid: true, message: "" });
 
     const fullName = `${firstName} ${lastName}`;
-    const response = await fetch("http://localhost:3001/signup", {
+    const response = await fetch("https://dolphin-back.onrender.com/signup", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name: fullName, username, password }),
+      body: JSON.stringify({ name: fullName, username, password })
     });
 
     if (response.status === 200) {
