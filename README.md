@@ -32,6 +32,10 @@ Utilizamos o conceito de componentização do React.js para reutilizar component
 
 Utilizamos o Git para o versionamento do projeto, com a utilização de branches para o desenvolvimento de novas funcionalidades e correção de bugs, seguindo o esquema do [Git Flow](https://www.alura.com.br/artigos/git-flow-o-que-e-como-quando-utilizar). Os commits seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## Testes
+
+Os testes foram feitos utilizando a biblioteca React Testing Library para o frontend, testando a renderização de componentes que não dependem da API. Já no backend, utilizamos do Postman para testar as rotas da API.
+
 ## Deploy
 
 O deploy do frontend do projeto foi feito utilizando a plataforma Vercel, enquanto o backend foi hospedado na plataforma Render.
