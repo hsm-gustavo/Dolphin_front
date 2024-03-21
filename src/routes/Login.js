@@ -68,7 +68,7 @@ const Login = () => {
         <form
           className="grid w-full grid-flow-row px-6"
           onSubmit={(e) => handleSubmit(e)}
-          
+          data-testid="login-form"
         >
           <Input
             classNameLabel={["text-left", "font-semibold"]}
@@ -116,6 +116,7 @@ const Login = () => {
             {"Forgot password?"}
           </Link> */}
           <input
+            data-testid="login-button"
             type="submit"
             value={"Login"}
             className="col-span-2 my-10 rounded-lg bg-black py-2 text-white hover:bg-slate-900"
