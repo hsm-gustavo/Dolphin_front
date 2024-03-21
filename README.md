@@ -44,7 +44,7 @@ Para acessar o frontend do projeto, clique [aqui](https://dolphin-editor.vercel.
 
 ## Problemas conhecidos
 
-Em relaçao ao deploy, existe um atraso na resposta da API, o que impacta a experiência do usuário.
+Em relaçao ao deploy, existe um atraso na resposta da API, o que impacta a experiência do usuário. Ao realizar a primeira requisição, observamos um tempo médio de 15 segundos para a resposta da API, enquanto nas requisições seguintes, o tempo médio cai para 5 segundos. Acreditamos que o problema esteja relacionado ao plano gratuito da plataforma Render, que limita a quantidade de recursos disponíveis para a aplicação.
 
 ## Utilização
 
