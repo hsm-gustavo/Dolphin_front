@@ -21,20 +21,25 @@ Dolphin é um editor de texto com suporte a formatação rica, o projeto foi des
 O projeto foi desenvolvido utilizando a metodologia XP (Extreme Programming), tendo como base os testes constantes.
 
 ## Padrões de Projeto
-- Padrão MVC (Model-View-Controller): Utilizamos uma versão adaptada do padrão MVC ...
+
+- Padrão MVC (Model-View-Controller): Utilizamos uma versão adaptada do padrão MVC, onde o React.js é responsável pela View, enquanto o backend é responsável pelo Model e pelo Controller. Por se configurar em uma aplicação de página única, o React.js é responsável por toda a lógica de renderização da página, enquanto o backend é responsável por toda a lógica de negócio e persistência de dados.
 
 ## Reuso de Código
-  Utilizamos o conceito de componentização do React.js para reutilizar componentes em diferentes partes do projeto. Além do React.js, no backend tivemos o uso da biblioteca Express.js, utilizada na construção da API.
+
+Utilizamos o conceito de componentização do React.js para reutilizar componentes em diferentes partes do projeto. Além do React.js, no backend tivemos o uso da biblioteca Express.js, utilizada na construção da API.
 
 ## Versionamento
-  Utilizamos o Git para o versionamento do projeto, com a utilização de branches para o desenvolvimento de novas funcionalidades e correção de bugs, seguindo o esquema do [Git Flow](https://www.alura.com.br/artigos/git-flow-o-que-e-como-quando-utilizar). Os commits seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+Utilizamos o Git para o versionamento do projeto, com a utilização de branches para o desenvolvimento de novas funcionalidades e correção de bugs, seguindo o esquema do [Git Flow](https://www.alura.com.br/artigos/git-flow-o-que-e-como-quando-utilizar). Os commits seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Deploy
+
 O deploy do frontend do projeto foi feito utilizando a plataforma Vercel, enquanto o backend foi hospedado na plataforma Render.
 
 Para acessar o frontend do projeto, clique [aqui](https://dolphin-editor.vercel.app/).
 
 ## Problemas conhecidos
+
 Em relaçao ao deploy, existe um atraso na resposta da API, o que impacta a experiência do usuário.
 
 ## Utilização
