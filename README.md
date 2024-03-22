@@ -34,7 +34,7 @@ Utilizamos o Git para o versionamento do projeto, com a utilização de branches
 
 ## Testes
 
-Os testes foram feitos utilizando a biblioteca React Testing Library para o frontend, testando a renderização de componentes que não dependem da API. Já no backend, utilizamos do Postman para testar as rotas da API.
+Os testes foram feitos utilizando a biblioteca React Testing Library para o frontend, testando a renderização de componentes que não dependem da API. Já no backend, utilizamos do Jest para testar as rotas da API. Os testes da api se encontram no repositório do backend.
 
 ## Deploy
 
